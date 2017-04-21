@@ -1,7 +1,8 @@
 logs/*
-npm-debug.log
+npm-debug.log.*
 node_modules/
 tmp
+docs
 *.swp
 *.log
 .idea
