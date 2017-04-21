@@ -1,9 +1,24 @@
 {
   "extends": "eslint-config-elemefe",
   "plugins": [
-    'vue'
+    "vue"
   ],
   "globals": {
-    "Promise": true  
-  }
+    "Promise": true,
+    "env": true,
+    "rm": true,
+    "mkdir": true
+  },
+  "rules": {
+    "semi": [0, "always"],
+    "space-before-function-paren": [0, "always"]
+  },
+  "env": {
+    "browser":true,
+    "node":true,
+    "commonjs":true,
+    "amd":true,
+    "es6":true,
+    "mocha":true
+ }
 }
