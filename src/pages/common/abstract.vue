@@ -28,22 +28,12 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      let children = vm.$route.meta.children;
-      if (children) {
-        vm.children = children;
-      } else {
-        vm.children = null;
-      }
+      vm.children = vm.$route.meta.children || null;
     });
   },
   watch: {
     '$route'(to, from) {
-      let children = this.$route.meta.children;
-      if (children) {
-        this.children = children;
-      } else {
-        this.children = null;
-      }
+      this.children = this.$route.meta.children || null;
     }
   }
 };

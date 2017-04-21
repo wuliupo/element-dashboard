@@ -13,6 +13,8 @@ make dev
 ### build
 ```
 make build
+
+node build/dev-server.js
 ```
 
 ### 文件目录

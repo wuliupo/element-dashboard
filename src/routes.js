@@ -8,10 +8,6 @@ import BigForm from './pages/form/big-form';
 import Login from './pages/login/login';
 import chart from './pages/chart/chart';
 
-const root = Vue.component('root', {
-  template: '<router-view></router-view>'
-});
-
 let routes = [
   {
     path: '/login',
@@ -31,7 +27,10 @@ let routes = [
   },
   {
     path: '/',
-    component: root,
+    component: Vue.component('root', {
+      template: '<router-view></router-view>'
+    }),
+    redirect: '/list',
     meta: {
       requiresAuth: true
     },
@@ -46,7 +45,7 @@ let routes = [
             path: 'filters',
             name: '搜索条件',
             component: ListWithFilters,
-            imgUrl: 'https://o0p2g4ul8.qnssl.com/vsite%2Fbackground.jpg'
+            imgUrl: 'https://o0p2g4ul8.qnssl.com/vsite/background.jpg'
           }
         ]
       },
@@ -60,7 +59,7 @@ let routes = [
             path: 'big-form',
             name: '简历管理',
             component: BigForm,
-            imgUrl: 'https://o0p2g4ul8.qnssl.com/vsite%2Fbackground.jpg'
+            imgUrl: 'https://o0p2g4ul8.qnssl.com/vsite/background.jpg'
           }
         ]
       },
@@ -69,14 +68,6 @@ let routes = [
         component: chart,
         name: '图表',
         iconClass: 'el-icon-document'
-        /* children: [
-          {
-            path: 'big-form',
-            name: '简历管理',
-            component: BigForm,
-            imgUrl: 'https://o0p2g4ul8.qnssl.com/vsite%2Fbackground.jpg'
-          }
-        ]*/
       }
     ]
   },
