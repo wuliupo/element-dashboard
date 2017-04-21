@@ -2,7 +2,7 @@
   "name": "element-dashboard",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/dev-server.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js"
