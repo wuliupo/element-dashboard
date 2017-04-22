@@ -5,6 +5,7 @@
 make dev
 npm run dev
 node build/dev-server.js
+open http://localhost:8088/
 ```
 
 ### release build
