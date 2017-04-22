@@ -58,7 +58,7 @@ export default {
         width: 25px;
         height: 25px;
         vertical-align: -7px;
-        margin: 0 0 0 10px;
+        margin-left: 10px;
         cursor: pointer;
       }
     }

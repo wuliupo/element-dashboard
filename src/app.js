@@ -32,10 +32,7 @@ export const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    let user = JSON.parse(localStorage.getItem('user'));
-    if (!user) {
-      next({path: '/login', query: {redirect: to.fullPath}});
-    }
+    localStorage.getItem('user') || next({path: '/login', query: {redirect: to.fullPath}});
   }
   next();
 });

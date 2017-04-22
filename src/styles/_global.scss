@@ -37,34 +37,29 @@ a {
   }
   .el-menu--horizontal {
     .el-submenu {
-      &.is-active {
-        border-bottom: 2px solid #EEE;
-        color: #FFF;
-        .el-submenu__title {
-          color: #FFF;
-        }
-      }
-      >.el-menu {
-        top: 36px;
+      .el-menu {
+        top: 34px;
         margin-left: 0;
       }
       .el-submenu__title {
-        height: 36px;
-        line-height: 36px;
+        height: 34px;
+        line-height: 34px;
         padding: 0 10px;
+        background-color: transparent;
         color: #EEE;
-        background-color: transparent !important;
       }
     }
     .el-menu-item {
+      padding: 0 10px;
       height: 36px;
       line-height: 36px;
-      background-color: transparent !important;
     }
-    >.el-menu-item {
+    >.el-menu-item, 
+    >.el-submenu {
+      margin-left: 10px;
       color: #EEE;
-      &.is-active {
-        color: #FFF;
+      &.is-active, &:hover {
+        background-color: transparent;
         border-bottom: 2px solid #EEE;
       }
     }
