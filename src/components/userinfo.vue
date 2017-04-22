@@ -31,11 +31,11 @@ export default {
     };
   },
   created() {
-    this.user = JSON.parse(localStorage.getItem('user'));
+    this.setUser();
   },
   watch: {
     '$route'(to, from) {
-      this.user = JSON.parse(localStorage.getItem('user'));
+      this.setUser();
     }
   },
   methods: {
@@ -48,6 +48,9 @@ export default {
         localStorage.removeItem('user');
         this.$router.push({ path: '/login' });
       }).catch(() => {});
+    },
+    setUser() {
+      this.user = JSON.parse(localStorage.getItem('user'));
     }
   }
 };

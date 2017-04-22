@@ -27,14 +27,18 @@
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+      },
+      setActiveMenu(test) {
+        console.log(test, this.$route.name);
+        this.activeMenu = this.$parent.activeMenu = this.$route.name;
       }
     },
     created() {
-      this.activeMenu = this.$route.name;
+      this.setActiveMenu('created');
     },
     watch: {
       '$route'(to, from) {
-        this.activeMenu = this.$route.name;
+        this.setActiveMenu('watch');
       }
     },
     props: ['mode']

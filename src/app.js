@@ -24,7 +24,7 @@ Vue.component('db-breadcrumb', Breadcrumb);
 Vue.component('db-navbar', Navbar);
 Vue.component('db-userinfo', userinfo);
 
-export const router = new VueRouter({
+const router = new VueRouter({
   routes,
   mode: 'hash',
   linkActiveClass: 'active'
