@@ -5,6 +5,8 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
 
 import Breadcrumb from './components/breadcrumb';
+import Navbar from './components/navbar';
+import userinfo from './components/userinfo';
 
 // start mock
 import Mock from './mock';
@@ -19,6 +21,8 @@ Vue.use(ElementUI);
 
 // register dashboard components
 Vue.component('db-breadcrumb', Breadcrumb);
+Vue.component('db-navbar', Navbar);
+Vue.component('db-userinfo', userinfo);
 
 export const router = new VueRouter({
   routes,
