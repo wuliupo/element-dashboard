@@ -1,11 +1,11 @@
 <template>
-  <div id="big-form">
+  <div class="big-form">
     <!-- breadcrumb start  -->
     <db-breadcrumb></db-breadcrumb>
     <!-- breadcrumb end  -->
 
     <div class="db-content-inner">
-      <el-form :rules="rules" ref="form" :model="form" label-width="100px">
+      <el-form :rules="rules" ref="form" :model="form">
         <el-form-item label="姓名" prop="name">
             <el-input placeholder="请输入您的姓名" v-model="form.name"></el-input>
         </el-form-item>
@@ -119,14 +119,14 @@
             :on-remove="handleRemove"
             :on-success="handleSuccess"
             :on-error="handleError"
-            :default-file-list="resume">
+            :file-list="resume">
             <i class="el-icon-upload"></i>
             <div class="el-dragger__text">将文件拖到此处，或<em>点击上传</em></div>
             <div class="el-upload__tip" slot="tip">只能上传pdf文件，且不超过5M</div>
           </el-upload>
         </el-form-item>
 
-        <el-form-item>
+        <el-form-item class="form-submit">
           <el-button type="primary" @click="submit">立即创建</el-button>
           <el-button @click="reset">重置</el-button>
         </el-form-item>
@@ -322,9 +322,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#big-form {
+.big-form {
   .el-form {
-    width: 600px;
+    max-width: 600px;
 
     .skill-line {
       margin: 10px 0;

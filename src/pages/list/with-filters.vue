@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="ListWithFiltersPage">
+  <div class="list-filters-page ">
 
     <!-- breadcrumb start  -->
     <db-breadcrumb></db-breadcrumb>
@@ -22,10 +22,12 @@
         </div>
         <div class="filter">
           起止时间：
-          <el-date-picker type="datetimerange" placeholder="选择时间范围" style="width:350px" v-model="filters.startEndTime"></el-date-picker>
+          <el-date-picker type="datetimerange" placeholder="选择时间范围" v-model="filters.startEndTime"></el-date-picker>
         </div>
-        <el-button type="primary" @click="handleSearch()">搜索</el-button>
-        <el-button type="primary" @click="createDialog = true">创建</el-button>
+        <div class="filter">
+          <el-button type="primary" @click="handleSearch()">搜索</el-button>
+          <el-button type="primary" @click="createDialog = true">创建</el-button>
+        </div>
       </div>
       <!-- filters end -->
 
@@ -225,14 +227,17 @@ export default {
 
     fetchData(page) {
       // param: sort way
-      let sortWay = this.filters.sortWay && this.filters.sortWay.prop ? this.filters.sortWay : '';
+      let sortWay = this.filters.sortWay || '';
 
       // param: page
-      this.page = page || this.page;
+      this.page = page || this.page || 0;
 
+      function getTime(date, i) {
+        return date && date[i] && date[i].getTime() || '';
+      }
       // param: start time and end end time
-      let startTime = this.filters.startEndTime ? this.filters.startEndTime[0].getTime() : '';
-      let endTime = this.filters.startEndTime ? this.filters.startEndTime[1].getTime() : '';
+      let startTime = getTime(this.filters.startEndTime, 0);
+      let endTime = getTime(this.filters.startEndTime, 1);
       console.log('this.filters.labelVal', this.filters.labelVal);
       let options = {
         page: this.page,
@@ -264,32 +269,51 @@ export default {
 </script>
 
 <style lang="scss">
-#ListWithFiltersPage {
+.list-filters-page {
   .filters {
-    margin: 0 0 20px 0;
+    margin: 0 0 20px;
     border: 1px #efefef solid;
     padding: 10px;
     background: #f9f9f9;
 
     .filter {
       display: inline-block;
-      width: auto;
+      max-width: 100%;
       padding: 10px;
-      border-radius: 5px;
-      .el-select {
-        display: inline-block;
-      }
     }
 
     .el-input {
       width: 150px;
       display: inline-block;
     }
+    .el-date-editor--datetimerange {
+      width: 350px;
+    }
   }
 
   .pagination-wrapper {
     text-align: center;
     padding: 30px;
+  }
+}
+
+// small device
+@media (max-width: 444px) {
+  .list-filters-page .filters {
+    .filter, .el-select, .el-input {
+      display: block;
+    }
+    .el-input {
+      width: 100%;
+    }
+    .el-select + .el-input {
+      margin-top: 10px;
+    }
+  }
+  .el-date-range-picker__content, .el-date-range-picker__time-header {
+    float: none;
+    margin: 0 auto;
+    width: 100% !important;
   }
 }
 </style>

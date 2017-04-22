@@ -2,11 +2,10 @@
 html{
   height: 100%;
   margin: 0;
-  font-size: 62.5%;
 }
 
 body {
-  font-size: 1.4rem;
+  font-size: 14px;
   padding: 0;
   margin: 0;
   font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
@@ -23,4 +22,141 @@ a {
 // hack
 .el-loading-mask {
   z-index: 1000;
+}
+
+.el-dialog {
+  min-width: 313px;
+}
+
+.db-header {
+  .el-menu {
+    display: inline-block;
+    vertical-align: top;
+    background-color: transparent;
+    margin-left: 20px;
+  }
+  .el-menu--horizontal {
+    .el-submenu {
+      &.is-active {
+        border-bottom: 2px solid #EEE;
+        color: #FFF;
+        .el-submenu__title {
+          color: #FFF;
+        }
+      }
+      >.el-menu {
+        top: 36px;
+        margin-left: 0;
+      }
+      .el-submenu__title {
+        height: 36px;
+        line-height: 36px;
+        padding: 0 10px;
+        color: #EEE;
+        background-color: transparent !important;
+      }
+    }
+    .el-menu-item {
+      height: 36px;
+      line-height: 36px;
+      background-color: transparent !important;
+    }
+    >.el-menu-item {
+      color: #EEE;
+      &.is-active {
+        color: #FFF;
+        border-bottom: 2px solid #EEE;
+      }
+    }
+  }
+}
+
+.el-form {
+  .el-form-item__label {
+    width: 100px;
+  }
+  .el-form-item__content {
+    margin-left: 100px;
+  }
+  .form-submit .el-form-item__content{
+    margin-left: 0 !important;
+    text-align: center;
+  }
+}
+.el-date-editor.el-input {
+  max-width: 100%;
+}
+
+.el-table {
+  .caret-wrapper {
+    position: absolute;
+    margin-top: -7px
+  }
+}
+
+// small device
+@media (max-width: 768px) {
+  .db {
+    .db-header {
+      .el-menu {
+        display: none;
+      }
+    }
+    .db-body {
+      .db-menu-wrapper {
+        display: none;
+      }
+      .db-content-wrapper {
+        padding-left: 0;
+      }
+    }
+  }
+  .el-table {
+    .cell {
+      font-size: 12px;
+    }
+  }
+  .el-form {
+    .el-input, .el-form-item__content {
+      font-size: 12px;
+    }
+    .el-form-item__label {
+      font-size: 12px;
+      width: 75px;
+    }
+    .el-form-item__content {
+      margin-left: 75px;
+    }
+    .el-upload {
+      text-align: left;
+      line-height: 16px;
+      ~ div {
+        line-height: 16px;
+      }
+    }
+    .el-icon-upload {
+      float: left;
+      margin-right: 5px;
+    }
+  }
+}
+
+// small device
+@media (max-width: 444px) {
+  .db {
+    .db-header {
+      .logo {
+        display: inline-block;
+        overflow: hidden;
+        max-width: 100px;
+        height: 36px;
+        font-size: 16px;
+      }
+    }
+  }
+  .el-form {
+    .el-autocomplete, .el-dropdown, .el-upload, .el-select {
+      width: 100%;
+    }
+  }
 }
