@@ -2,36 +2,17 @@
   <div class="main">
     <el-row :gutter="20">
       <!--柱形图-->
-      <el-col :span="8">
-        <div class="grid-content">
-          <div id="chart-page"></div>
-        </div>
-      </el-col>
+      <el-col :sm="24" :md="12" class="grid-content" id="chart-page"></el-col>
       <!--折线图-->
-      <el-col :span="8">
-        <div class="grid-content">
-          <div id="line-chart"></div>
-        </div>
-      </el-col>
-      <el-col :span="8"><div class="grid-content"></div></el-col>
+      <el-col :sm="24" :md="12" class="grid-content" id="line-chart"></el-col>
     </el-row>
 
     <el-row :gutter="20">
       <!--饼图-->
-      <el-col :span="8">
-        <div class="grid-content">
-          <div id="chart-pie"></div>
-        </div>
-      </el-col>
+      <el-col :sm="24" :md="12" class="grid-content" id="chart-pie"></el-col>
       <!--漏斗图-->
-      <el-col :span="8">
-        <div class="grid-content">
-          <div id="funnel-chart"></div>
-        </div>
-      </el-col>
-      <el-col :span="8"><div class="grid-content"></div></el-col>
+      <el-col :sm="24" :md="12" class="grid-content" id="funnel-chart"></el-col>
     </el-row>
-
   </div>
 </template>
 
@@ -44,8 +25,7 @@ export default {
   },
   mounted: () =>{
     // 柱状图
-    let el_histogram = document.getElementById('chart-page');
-    echarts.init(el_histogram).setOption({
+    echarts.init(document.getElementById('chart-page')).setOption({
       title: { text: '柱形图示例' },
       tooltip: {},
       xAxis: {
@@ -60,8 +40,7 @@ export default {
     });
 
     //  折线图
-    let el_lineChart = document.getElementById('line-chart');
-    echarts.init(el_lineChart).setOption({
+    echarts.init(document.getElementById('line-chart')).setOption({
       title: {
         text: '折线图示例',
         subtext: '纯属虚构'
@@ -70,10 +49,15 @@ export default {
         trigger: 'axis'
       },
       legend: {
+        x: 'center',
+        y: 'bottom',
         data: ['意向', '预购', '成交']
       },
       toolbox: {
         show: true,
+        x: 'right',
+        y: 'top',
+        padding: 20,
         feature: {
           magicType: {show: true, type: ['stack', 'tiled']},
           saveAsImage: {show: true}
@@ -106,8 +90,7 @@ export default {
     });
 
     //  饼图
-    let el_chart = document.getElementById('chart-pie');
-    echarts.init(el_chart).setOption({
+    echarts.init(document.getElementById('chart-pie')).setOption({
       backgroundColor: '#2c343c',
       title: {
         text: '饼图',
@@ -179,8 +162,7 @@ export default {
     });
 
     //  漏斗图
-    let el_funnel = document.getElementById('funnel-chart');
-    echarts.init(el_funnel).setOption({
+    echarts.init(document.getElementById('funnel-chart')).setOption({
       title: {
         text: '漏斗图',
         subtext: '纯属虚构'
@@ -197,6 +179,8 @@ export default {
         }
       },
       legend: {
+        x: 'center',
+        y: 'bottom',
         data: ['展现', '点击', '访问', '咨询', '订单']
       },
       calculable: true,
@@ -259,10 +243,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .el-row {
-    margin-bottom: 25px;
-  }
-  #chart-page, #line-chart, #funnel-chart, #chart-pie {
+  .grid-content {
+    margin-bottom: 40px;
     height: 350px;
   }
 </style>
