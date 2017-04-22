@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="login-page" @keyup.enter="login">
+  <div class="login-page" @keyup.enter="login">
     <div class="login-form">
       <div class="input-group">
         <div class="title">Element Dashboard</div>
@@ -82,8 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  #login-page {
-    width: 100vw;
+  .login-page {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -91,31 +90,36 @@ export default {
     background: #efeeee;
 
     .login-form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 500px;
-      height: 400px;
+      padding-bottom: 20px;
       border-radius: 10px;
       background: white;
       border: 1px #eaeaea solid;
-      box-shadow: 0px 0px 25px #cac6c6;
+      box-shadow: 0 0 25px #cac6c6;
 
       .title {
+        margin-bottom: 20px;
         color: #20a0ff;
         font-weight: bold;
         font-size: 40px;
         text-align: center;
-        line-height: 2.2;
-        font-family: sans-serif;
       }
 
       .input-group {
-        margin-top: 30px;
+        margin: 30px auto 0;
         width: 80%;
         button {
           width: 100%;
         }
+      }
+    }
+  }
+  @media (max-width: 444px) {
+    .login-page {
+      height: inhert;
+      background-color: #FFF;
+      .login-form {
+        border: 0;
+        box-shadow: none;
       }
     }
   }
