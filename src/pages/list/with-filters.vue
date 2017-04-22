@@ -226,29 +226,18 @@ export default {
     },
 
     fetchData(page) {
-      // param: sort way
-      let sortWay = this.filters.sortWay || '';
-
-      // param: page
-      this.page = page || this.page || 0;
-
       function getTime(date, i) {
         return date && date[i] && date[i].getTime() || '';
       }
       // param: start time and end end time
-      let startTime = getTime(this.filters.startEndTime, 0);
-      let endTime = getTime(this.filters.startEndTime, 1);
-      console.log('this.filters.labelVal', this.filters.labelVal);
       let options = {
-        page: this.page,
+        page: this.page = page || this.page || 0,
         userName: this.filters.labelVal === '2' ? this.filters.userName : null,
-        startTime: startTime,
-        endTime: endTime,
-        sortWay: sortWay,
+        startTime: getTime(this.filters.startEndTime, 0),
+        endTime: getTime(this.filters.startEndTime, 1),
+        sortWay: this.filters.sortWay || '',
         age: this.filters.labelVal === '1' ? parseInt(this.filters.age, 10) : null
       };
-//      console.log('[dashboard]:your post params');
-//      console.log(options);
 
       this.loading = true;
       fetchList(options).then((res) => {

@@ -229,10 +229,10 @@ export default {
         if (code === 200) {
           school_list.forEach(school => {
             school.value = school.name;
-            school['major_list'].forEach(major => { major.value = major.name; });
+            school.major_list.forEach(major => { major.value = major.name; });
           });
           this.schoolList = school_list;
-          this.selectedSchoolId = school_list[0] ? school_list[0].id : null;
+          this.selectedSchoolId = (school_list[0] || {}).id;
         }
       });
     },

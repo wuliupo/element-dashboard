@@ -6,8 +6,12 @@
         <img :src="user.avatar">
       </span>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>个人信息</el-dropdown-item>
-        <el-dropdown-item>设置</el-dropdown-item>
+        <el-dropdown-item>
+          <a href="#/chart">个人信息</a>
+        </el-dropdown-item>
+        <el-dropdown-item>
+          <router-link :to="{path: '/form/big-form'}">设置</router-link>
+        </el-dropdown-item>
         <el-dropdown-item @click.native="logout">注销</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -63,5 +67,10 @@ export default {
       }
     }
   }
+}
+.el-dropdown-menu__item a {
+  display: block;
+  margin: 0 -10px;
+  padding: 0 10px;
 }
 </style>

@@ -53,7 +53,6 @@
     position: fixed;
     left: 0;
     top: 0;
-
     .logo{
       font-size: 28px;
     }
@@ -84,13 +83,13 @@
       width: 100%;
       z-index: 97;
       box-sizing: border-box;
-      padding: 60px 0px 0px 200px;
+      padding: 60px 0 0 200px;
 
       .db-content {
         padding: 25px;
 
         .db-content-inner {
-          padding: 30px 0px;
+          padding: 30px 0;
         }
       }
     }

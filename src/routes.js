@@ -76,10 +76,9 @@ let routes = [
     redirect: {path: '/404'}
   }
 ];
-let menuCount = routes.length;
-routes[menuCount - 2].children.forEach(route => {
+routes[routes.length - 2].children.forEach(route => {
   if (route.children) {
-    if (!route.meta) route.meta = {};
+    route.meta = route.meta || {};
     route.meta.children = route.children;
   }
 });
