@@ -28,17 +28,16 @@
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       },
-      setActiveMenu(test) {
-        console.log(test, this.$route.name);
+      setActiveMenu() {
         this.activeMenu = this.$parent.activeMenu = this.$route.name;
       }
     },
     created() {
-      this.setActiveMenu('created');
+      this.setActiveMenu();
     },
     watch: {
       '$route'(to, from) {
-        this.setActiveMenu('watch');
+        this.setActiveMenu();
       }
     },
     props: ['mode']
