@@ -24,12 +24,17 @@
 <script>
   export default {
     name: 'db-navbar',
+    data() {
+      return {
+        activeMenu: this.$route.name
+      }
+    },
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       },
       setActiveMenu() {
-        this.activeMenu = this.$parent.activeMenu = this.$route.name;
+        this.activeMenu = this.$route.name;
       }
     },
     created() {

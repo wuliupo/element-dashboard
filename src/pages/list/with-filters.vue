@@ -1,9 +1,7 @@
 <template lang="html">
   <div class="list-filters-page ">
 
-    <!-- breadcrumb start  -->
     <db-breadcrumb></db-breadcrumb>
-    <!-- breadcrumb end  -->
 
     <div class="db-content-inner">
 
@@ -26,13 +24,13 @@
         </div>
         <div class="filter">
           <el-button type="primary" @click="handleSearch()">搜索</el-button>
-          <el-button type="primary" @click="createDialog = true">创建</el-button>
+          <el-button type="primary" @click="handleEdit()">创建</el-button>
         </div>
       </div>
       <!-- filters end -->
 
       <!-- table start  -->
-      <el-table :data="users" ref="table" style="width: 100%" element-loading-text="拼命加载中"
+      <el-table :data="users" ref="userTable" element-loading-text="拼命加载中"
         stripe
         v-loading="loading"
         @selection-change="handleSelectionChange"
@@ -62,45 +60,11 @@
       <!-- pagination end  -->
 
       <!-- edit dialog start -->
-      <el-dialog title="编辑" v-model="editDialog" size="tiny">
-        <el-form ref="editForm" :model="editForm" label-width="80px">
-          <el-form-item label="姓名">
-            <el-input v-model="editForm.name" class="el-col-24"></el-input>
-          </el-form-item>
-          <el-form-item label="出生日期">
-            <el-date-picker class="el-col-24" type="datetime" placeholder="选择日期时间"
-              v-model="editForm.time">
-            </el-date-picker>
-          </el-form-item>
-        </el-form>
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="editDialog = false">取 消</el-button>
-          <el-button type="primary" @click="handleEditSave()">确 定</el-button>
-        </span>
+      <el-dialog :title="userForm.id ? '编辑' : '添加'" v-model="userDialog" size="tiny">
+        <db-add-item :userForm="userForm" @afterAddEvent="closeDialog"></db-add-item>
       </el-dialog>
       <!-- edit dialog end -->
 
-      <!-- create dialog start -->
-      <el-dialog title="保存" v-model="createDialog" size="tiny">
-        <el-form ref="createFrom" :model="createForm" label-width="80px">
-          <el-form-item label="姓名">
-            <el-input v-model="createForm.name" class="el-col-24"></el-input>
-          </el-form-item>
-          <el-form-item label="出生日期">
-            <el-date-picker class="el-col-24" type="datetime" placeholder="选择日期时间"
-              v-model="createForm.time">
-            </el-date-picker>
-          </el-form-item>
-          <el-form-item label="地址">
-            <el-input v-model="createForm.address" class="el-col-24"></el-input>
-          </el-form-item>
-        </el-form>
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="createDialog = false">取 消</el-button>
-          <el-button type="primary" @click="handleSave()">确 定</el-button>
-        </span>
-      </el-dialog>
-      <!-- create dialog end -->
     </div>
   </div>
 </template>
@@ -108,13 +72,10 @@
 <script>
 import {
   fetchList,
-  addUser,
-  removeUser,
-  editUser
-} from './../../api/api';
+  removeUser
+} from '../../api/api';
 
-// import moment from 'moment';
-// import Vue from 'vue';
+const AddItem = resolve => require(['../../components/add-item'], resolve)
 
 export default {
   data() {
@@ -125,7 +86,7 @@ export default {
       loading: true,
       multipleSelection: [],
       reserveSelection: false,
-      editDialog: false,
+      userDialog: false,
       createDialog: false,
       filters: {
         sortWay: '',
@@ -134,16 +95,7 @@ export default {
         labelVal: '1',
         age: ''
       },
-      editForm: {
-        id: '',
-        name: '',
-        time: ''
-      },
-      createForm: {
-        name: '',
-        time: '',
-        address: ''
-      },
+      userForm: {},
       selectedOptions: [{
         value: '1',
         label: '年龄'
@@ -166,33 +118,14 @@ export default {
       this.fetchData();
     },
 
-    handleEditSave() {
-      editUser(this.editForm).then(() => {
-        this.fetchData();
-        this.editDialog = false;
-
-        this.$message({
-          message: '编辑成功',
-          type: 'success'
-        });
-      });
-    },
-
-    handleSave() {
-      addUser(this.createForm).then(() => {
-        this.fetchData();
-        this.createDialog = false;
-
-        this.$message({
-          message: '保存成功',
-          type: 'success'
-        });
-      });
-    },
-
     handleEdit($index, row) {
-      this.editForm.id = row.id;
-      this.editDialog = true;
+      row = row || {};
+      this.userForm = {};
+      this.userForm.id = row.id;
+      this.userForm.name = row.name;
+      this.userForm.date = row.date;
+      this.userForm.address = row.address;
+      this.userDialog = true;
     },
 
     handleDelete($index, row) {
@@ -221,6 +154,11 @@ export default {
       this.fetchData();
     },
 
+    closeDialog(user) {
+      this.userDialog = false;
+      console.log(user);
+    },
+
     handleCurrentChange(val) {
       this.fetchData(val);
     },
@@ -242,7 +180,7 @@ export default {
       this.loading = true;
       fetchList(options).then((res) => {
         // clear selection
-        this.$refs.table.clearSelection();
+        this.$refs.userTable.clearSelection();
         // lazy render data
         this.users = res.data.users;
         this.total = res.data.total;
@@ -250,9 +188,11 @@ export default {
       });
     }
   },
-
   mounted() {
     this.fetchData();
+  },
+  components: {
+    'db-add-item': AddItem
   }
 };
 </script>

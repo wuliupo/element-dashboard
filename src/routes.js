@@ -1,12 +1,12 @@
 import Vue from 'vue';
-import Abstract from './pages/common/abstract';
-import NotFound from './pages/common/404';
 
-// list with filters page
-import ListWithFilters from './pages/list/with-filters';
-import BigForm from './pages/form/big-form';
-import Login from './pages/login/login';
-import chart from './pages/chart/chart';
+const Abstract = resolve => require(['./pages/common/abstract'], resolve)
+const NotFound = resolve => require(['./pages/common/404'], resolve)
+const ListWithFilters = resolve => require(['./pages/list/with-filters'], resolve)
+const AddItem = resolve => require(['./pages/list/add-item-page'], resolve)
+const Login = resolve => require(['./pages/login/login'], resolve)
+const chart = resolve => require(['./pages/chart/chart'], resolve)
+const BigForm = resolve => require(['./pages/form/big-form'], resolve)
 
 let routes = [
   {
@@ -45,6 +45,12 @@ let routes = [
             path: 'filters',
             name: '搜索条件',
             component: ListWithFilters,
+            imgUrl: 'https://o0p2g4ul8.qnssl.com/vsite/background.jpg'
+          },
+          {
+            path: 'add',
+            name: '添加条目',
+            component: AddItem,
             imgUrl: 'https://o0p2g4ul8.qnssl.com/vsite/background.jpg'
           }
         ]
