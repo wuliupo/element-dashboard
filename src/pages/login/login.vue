@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { requestLogin } from '../../api/api';
+import { requestLogin } from 'src/api/api';
 export default {
   data() {
     return {

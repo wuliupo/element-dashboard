@@ -61,7 +61,8 @@
 
       <!-- edit dialog start -->
       <el-dialog :title="userForm.id ? '编辑' : '添加'" v-model="userDialog" size="tiny">
-        <db-add-item :userForm="userForm" @afterAddEvent="closeDialog"></db-add-item>
+        <db-add-item v-if="userDialog" :userForm="userForm" @afterAddEvent="closeDialog"></db-add-item>
+        <a v-if="userForm.id" :href="'#/list/edit/' + userForm.id">在页面编辑</a>
       </el-dialog>
       <!-- edit dialog end -->
 
@@ -73,9 +74,9 @@
 import {
   fetchList,
   removeUser
-} from '../../api/api';
+} from 'src/api/api';
 
-const AddItem = resolve => require(['../../components/add-item'], resolve)
+import AddItem from 'src/components/add-item'
 
 export default {
   data() {

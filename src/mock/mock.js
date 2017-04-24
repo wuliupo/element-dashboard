@@ -17,6 +17,8 @@ export default {
     // mock list request
     mock.onGet('/user/list').reply(UserAPI.list);
 
+    mock.onGet('/user/edit').reply(UserAPI.detail);
+
     mock.onPost('/user/add').reply(UserAPI.add);
 
     mock.onPost('/user/remove').reply(UserAPI.remove);

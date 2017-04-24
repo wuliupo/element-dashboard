@@ -6,6 +6,8 @@ export const fetchList = params => { return axios.get(`${ base }/user/list`, {pa
 
 export const addUser = params => { return axios.post(`${ base }/user/add`, params); };
 
+export const getUser = params => { return axios.get(`${ base }/user/edit`, {params: params}); };
+
 export const editUser = params => { return axios.post(`${ base }/user/edit`, params); };
 
 export const removeUser = params => { return axios.post(`${ base }/user/remove`, params); };

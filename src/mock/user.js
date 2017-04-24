@@ -76,5 +76,19 @@ export default {
         }]);
       });
     });
+  },
+  detail: config => {
+    let id = config.params.id, user = {};
+    _Users.some(u => {
+      if (u.id === id) {
+        user = u;
+        return true;
+      }
+    });
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve([200, user]);
+      });
+    });
   }
 };

@@ -6,21 +6,17 @@
 </template>
 
 <script>
-const AddItem = resolve => require(['../../components/add-item'], resolve)
+import AddItem from 'src/components/add-item';
+import {getUser} from 'src/api/api';
 
 export default {
   data() {
     return {
       userForm: {
-        type: Object,
-        default: function () {
-          return {
-            id: '',
-            name: '',
-            time: '',
-            address: ''
-          }
-        }
+        id: '',
+        name: '',
+        time: '',
+        address: ''
       }
     }
   },
@@ -28,6 +24,17 @@ export default {
     handleSave() {
       this.$router.push({path: '/list/filters'});
     }
+  },
+  mounted() {
+    var params = this.$route.params;
+    if (!params || !params.id) {
+      return;
+    }
+    getUser(params).then((res) => {
+      if (res && res.status === 200 && res.data) {
+        this.userForm = res.data;
+      }
+    });
   },
   components: {
     'db-add-item': AddItem
