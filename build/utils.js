@@ -20,7 +20,7 @@ exports.cssLoaders = function (options) {
         loader = loader.replace(/\?/, '-loader?')
         extraParamChar = '&'
       } else {
-        loader = loader + '-loader'
+        loader += '-loader'
         extraParamChar = '?'
       }
       return loader + (options.sourceMap ? extraParamChar + 'sourceMap' : '')
