@@ -7,7 +7,7 @@
             <i :class="route.iconClass" v-if="mode != 'horizontal'"></i>
             {{route.name}}
           </template>
-          <el-menu-item :index="cRoute.name" v-for="(cRoute, cIndex) in route.children" :route="cRoute">{{cRoute.name}}</el-menu-item>
+          <el-menu-item v-if="!cRoute.hideInNav" :index="cRoute.name" v-for="(cRoute, cIndex) in route.children" :route="cRoute">{{cRoute.name}}</el-menu-item>
         </el-submenu>
       </template>
 

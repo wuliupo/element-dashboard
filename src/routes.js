@@ -52,6 +52,13 @@ let routes = [
             name: '添加条目',
             component: AddItem,
             imgUrl: 'https://o0p2g4ul8.qnssl.com/vsite/background.jpg'
+          },
+          {
+            path: 'edit/:id',
+            name: '修改条目',
+            hideInNav: true,
+            component: AddItem,
+            imgUrl: 'https://o0p2g4ul8.qnssl.com/vsite/background.jpg'
           }
         ]
       },
