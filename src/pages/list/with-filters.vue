@@ -60,7 +60,7 @@
       <!-- pagination end  -->
 
       <!-- edit dialog start -->
-      <el-dialog :title="userForm.id ? '编辑' : '添加'" v-model="userDialog" size="tiny">
+      <el-dialog v-if="userDialog" :title="userForm.id ? '编辑' : '添加'" v-model="userDialog" size="tiny">
         <db-add-item v-if="userDialog" :userForm="userForm" @afterAddEvent="closeDialog"></db-add-item>
         <a v-if="userForm.id" :href="'#/list/edit/' + userForm.id">在页面编辑</a>
       </el-dialog>
@@ -120,12 +120,7 @@ export default {
     },
 
     handleEdit($index, row) {
-      row = row || {};
-      this.userForm = {};
-      this.userForm.id = row.id;
-      this.userForm.name = row.name;
-      this.userForm.date = row.date;
-      this.userForm.address = row.address;
+      this.userForm = JSON.parse(JSON.stringify(row || {}));
       this.userDialog = true;
     },
 
@@ -204,7 +199,7 @@ export default {
     margin: 0 0 20px;
     border: 1px #efefef solid;
     padding: 10px;
-    background: #f9f9f9;
+    background-color: #f9f9f9;
 
     .filter {
       display: inline-block;

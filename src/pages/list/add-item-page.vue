@@ -12,12 +12,7 @@ import {getUser} from 'src/api/api';
 export default {
   data() {
     return {
-      userForm: {
-        id: '',
-        name: '',
-        time: '',
-        address: ''
-      }
+      userForm: {}
     }
   },
   methods: {
@@ -33,6 +28,7 @@ export default {
     getUser(params).then((res) => {
       if (res && res.status === 200 && res.data) {
         this.userForm = res.data;
+        console.log(res.data);
       }
     });
   },
