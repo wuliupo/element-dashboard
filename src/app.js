@@ -9,7 +9,7 @@ import Navbar from './components/navbar';
 import userinfo from './components/userinfo';
 
 // start mock
-import Mock from './mock/mock';
+import Mock from 'mock';
 Mock.bootstrap();
 
 import App from './app.vue';

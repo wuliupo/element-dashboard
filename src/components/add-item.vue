@@ -11,7 +11,7 @@
     <el-form-item label="地址">
       <el-input v-model="userForm.address" class="el-col-24"></el-input>
     </el-form-item>
-    <el-form-item class="form-submit el-dialog__footer">
+    <el-form-item class="form-submit">
       <el-button @click="endForm()">取 消</el-button>
       <el-button type="primary" @click="handleSave()">确 定</el-button>
     </el-form-item>
