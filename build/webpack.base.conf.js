@@ -26,7 +26,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.common.js',
       'src': path.resolve(__dirname, '../src'),
-      'mock': path.resolve(__dirname, env === 'production' ? '../src/mock/empty' : '../src/mock/mock'),
+      'mock': path.resolve(__dirname, process.env.MOCK_DATA ? '../src/mock/mock' : '../src/mock/empty'),
       'assets': path.resolve(__dirname, '../src/assets'),
       'components': path.resolve(__dirname, '../src/components')
     }
