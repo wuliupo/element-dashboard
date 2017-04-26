@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="user-info" v-if="user.id">
+  <div class="user-info" v-if="user && user.id">
     <span v-text="user.username"></span>
     <el-dropdown trigger="click">
       <span class="el-dropdown-link">
