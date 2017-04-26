@@ -96,7 +96,7 @@ export default {
 
     > canvas {
       position: absolute;
-      z-index: -1;
+      z-index: 1;
     }
 
     .login-form {
@@ -106,7 +106,7 @@ export default {
       background-color: #FFF;
       border: 1px #eaeaea solid;
       box-shadow: 0 0 25px #cac6c6;
-      z-index: 1;
+      z-index: 2;
 
       .title {
         margin-bottom: 20px;
