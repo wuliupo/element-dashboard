@@ -3,8 +3,8 @@ export default {
     number: {
       value: 20,
       density: {
-        enable: !0,
-        value_area: 1E3
+        enable: true,
+        value_area: 1000
       }
     },
     color: {
@@ -18,50 +18,45 @@ export default {
       },
       polygon: {
         nb_sides: 5
-      },
-      image: {
-        src: 'img/github.svg',
-        width: 100,
-        height: 100
       }
     },
     opacity: {
       value: 0.5,
-      random: !1,
+      random: false,
       anim: {
-        enable: !1,
+        enable: false,
         speed: 1,
         opacity_min: 0.1,
-        sync: !1
+        sync: false
       }
     },
     size: {
       value: 15,
-      random: !0,
+      random: true,
       anim: {
-        enable: !1,
+        enable: false,
         speed: 180,
         size_min: 0.1,
-        sync: !1
+        sync: false
       }
     },
     line_linked: {
-      enable: !0,
+      enable: true,
       distance: 650,
       color: '#cfcfcf',
       opacity: 0.26,
       width: 1
     },
     move: {
-      enable: !0,
+      enable: true,
       speed: 2,
       direction: 'none',
-      random: !0,
-      straight: !1,
+      random: true,
+      straight: false,
       out_mode: 'out',
-      bounce: !1,
+      bounce: false,
       attract: {
-        enable: !1,
+        enable: false,
         rotateX: 600,
         rotateY: 1200
       }
@@ -71,14 +66,14 @@ export default {
     detect_on: 'canvas',
     events: {
       onhover: {
-        enable: !1,
+        enable: false,
         mode: 'repulse'
       },
       onclick: {
-        enable: !1,
+        enable: false,
         mode: 'push'
       },
-      resize: !0
+      resize: true
     },
     modes: {
       grab: {
@@ -106,5 +101,5 @@ export default {
       }
     }
   },
-  retina_detect: !0
+  retina_detect: true
 };
