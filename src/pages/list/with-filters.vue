@@ -42,8 +42,8 @@
         <el-table-column prop="address" label="地址"></el-table-column>
         <el-table-column :context="_self" width="150" inline-template label="操作">
           <div>
-            <el-button size="small" @click="handleEdit($index, row)">编辑</el-button>
-            <el-button size="small" type="danger" @click="handleDelete($index, row)">删除</el-button>
+            <el-button class="btn-transprant" size="small" @click="handleEdit($index, row)">编辑</el-button>
+            <el-button class="btn-transprant" size="small" type="danger" @click="handleDelete($index, row)">删除</el-button>
           </div>
         </el-table-column>
       </el-table>
