@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class="login-page" @keyup.enter="login">
-    <div class="login-form">
+  <div class="login-page" id="particles">
+    <el-form class="login-form" @keyup.enter="login" @submit="login">
       <div class="input-group">
         <div class="title">Element Dashboard</div>
         <el-input
@@ -29,12 +29,14 @@
       <div class="input-group">
         <el-button @click.native="login" type="primary" :loading="isBtnLoading">{{btnText}}</el-button>
       </div>
-    </div>
+    </el-form>
   </div>
 </template>
 
 <script>
 import { requestLogin } from 'src/api/api';
+import {} from 'particles.js';
+import particlesData from '../../assets/particles';
 export default {
   data() {
     return {
@@ -49,6 +51,9 @@ export default {
       if (this.isBtnLoading) return '登录中...';
       return '登录';
     }
+  },
+  mounted() {
+    window.particlesJS('particles', particlesData || {});
   },
   methods: {
     login() {
@@ -81,26 +86,33 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .login-page {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #efeeee;
+    background-color: rgba(100, 100, 100, 0.1);;
+
+    > canvas {
+      position: absolute;
+      z-index: -1;
+    }
 
     .login-form {
+      min-width: 320px;
       padding-bottom: 20px;
       border-radius: 10px;
-      background: white;
+      background-color: #FFF;
       border: 1px #eaeaea solid;
       box-shadow: 0 0 25px #cac6c6;
+      z-index: 1;
 
       .title {
         margin-bottom: 20px;
         color: #20a0ff;
         font-weight: bold;
-        font-size: 40px;
+        font-size: 26px;
         text-align: center;
       }
 
