@@ -35,8 +35,8 @@
 
 <script>
 import { requestLogin } from 'src/api/api';
-import {} from 'particles.js';
-import particlesData from '../../assets/particles';
+import 'particles.js';
+import particlesData from '../../assets/particles.json';
 export default {
   data() {
     return {
@@ -92,7 +92,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(100, 100, 100, 0.1);;
+    background-color: #000;
 
     > canvas {
       position: absolute;
