@@ -36,7 +36,7 @@ export default {
 
     mock.onPost('/login').reply(config => {
       let {username, password} = JSON.parse(config.data);
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         let user = null;
         setTimeout(() => {
           let hasUser = LoginUsers.some(u => {
@@ -56,8 +56,8 @@ export default {
       });
     });
 
-    mock.onGet('/schools').reply(config => {
-      return new Promise((resolve, reject) => {
+    mock.onGet('/schools').reply(() => {
+      return new Promise(resolve => {
         setTimeout(() => {
           let school_list = JSON.parse(JSON.stringify(Schools));
           resolve([200, {code: 200, msg: '请求成功!!!', school_list}]);
@@ -65,8 +65,8 @@ export default {
       });
     });
 
-    mock.onGet('/work_durations').reply(config => {
-      return new Promise((resolve, reject) => {
+    mock.onGet('/work_durations').reply(() => {
+      return new Promise(resolve => {
         setTimeout(() => {
           let workDurationOptions = JSON.parse(JSON.stringify(WorkDurationOptions));
           resolve([200, {code: 200, msg: '请求成功!!!', workDurationOptions}]);
@@ -74,8 +74,8 @@ export default {
       });
     });
 
-    mock.onGet('/academics').reply(config => {
-      return new Promise((resolve, reject) => {
+    mock.onGet('/academics').reply(() => {
+      return new Promise(resolve => {
         setTimeout(() => {
           let academicOptions = JSON.parse(JSON.stringify(AcademicOptions));
           resolve([200, {code: 200, msg: '请求成功!!!', academicOptions}]);
@@ -83,8 +83,8 @@ export default {
       });
     });
 
-    mock.onPost('/resume').reply(config => {
-      return new Promise((resolve, reject) => {
+    mock.onPost('/resume').reply(() => {
+      return new Promise(resolve => {
         setTimeout(() => {
           resolve([200, {code: 200, msg: '上传成功', resume_id: Mock.Random.guid()}]);
         }, Math.random() * 200 + 50);

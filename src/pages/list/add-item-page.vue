@@ -25,7 +25,7 @@ export default {
     if (!params || !params.id) {
       return;
     }
-    getUser(params).then((res) => {
+    getUser(params).then(res => {
       if (res && res.status === 200 && res.data) {
         this.userForm = res.data;
         console.log(res.data);

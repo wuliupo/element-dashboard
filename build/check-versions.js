@@ -1,11 +1,11 @@
 
-var semver = require('semver')
-var chalk = require('chalk')
-var packageConfig = require('../package.json')
-var exec = function (cmd) {
+var semver = require('semver');
+var chalk = require('chalk');
+var packageConfig = require('../package.json');
+var exec = function(cmd) {
   return require('child_process')
-    .execSync(cmd).toString().trim()
-}
+    .execSync(cmd).toString().trim();
+};
 
 var versionRequirements = [
   {
@@ -18,22 +18,22 @@ var versionRequirements = [
     currentVersion: exec('npm --version'),
     versionRequirement: packageConfig.engines.npm
   }
-]
+];
 
-module.exports = function () {
-  var warnings = []
+module.exports = function() {
+  var warnings = [];
   versionRequirements.map(mod => {
     if (!semver.satisfies(mod.currentVersion, mod.versionRequirement)) {
       warnings.push(mod.name + ': ' +
         chalk.red(mod.currentVersion) + ' should be ' +
         chalk.green(mod.versionRequirement)
-      )
+      );
     }
-  })
+  });
 
   if (warnings.length) {
-    console.log(chalk.yellow('To use this template, you must update following to modules:'))
-    warnings.map(warn => {console.log('  ' + warn)})
-    process.exit(1)
+    console.log(chalk.yellow('To use this template, you must update following to modules:'));
+    warnings.map(warn => {console.log('  ' + warn);});
+    process.exit(1);
   }
-}
+};

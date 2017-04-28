@@ -30,6 +30,7 @@
             <el-option
               v-for="option in workDurationOptions"
               :label="option.label"
+              :key="option.value"
               :value="option.value">
             </el-option>
           </el-select>
@@ -40,6 +41,7 @@
             <el-option
               v-for="option in academicOptions"
               :label="option.label"
+              :key="option.value"
               :value="option.value">
             </el-option>
           </el-select>
@@ -90,7 +92,7 @@
         </el-form-item>
 
         <el-form-item label="技能" prop="skills">
-          <el-row class="skill-line" v-for="(skill, index) in form.skills" type="flex" align="middle">
+          <el-row class="skill-line" v-for="(skill, index) in form.skills" :key="index" type="flex" align="middle">
             <el-col :span="5">
               <el-input v-model="skill.name" placeholder="请输入技能"></el-input>
             </el-col>
@@ -274,9 +276,9 @@ export default {
     deleteSkill(index) {
       this.form.skills.splice(index, 1);
     },
-    handleRemove(file, fileList) {
+    handleRemove() {
     },
-    handlePreview(file) {
+    handlePreview() {
     },
     handleSuccess() {
     },

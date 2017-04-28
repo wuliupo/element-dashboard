@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="abstract">
     <el-row v-if="children">
-      <el-col :xs="10" :sm="8" :md="6" :lg="4" v-for="(route, index) in children" :offset="index > 0 ? 2 : 0">
+      <el-col :xs="10" :sm="8" :md="6" :lg="4" v-for="(route, index) in children" :key="index" :offset="index > 0 ? 2 : 0">
         <el-card v-if="!route.hideInNav">
           <div class="card-wrapper">
             <div class="img">
@@ -33,6 +33,7 @@ export default {
   },
   watch: {
     '$route'(to, from) {
+      console.log(to, from);
       this.children = this.$route.meta.children;
     }
   }

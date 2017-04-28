@@ -12,6 +12,7 @@
             <el-option
                 v-for="item in selectedOptions"
                 :label="item.label"
+                :key="item.value"
                 :value="item.value">
             </el-option>
           </el-select>

@@ -33,11 +33,6 @@ export default {
   created() {
     this.setUser();
   },
-  watch: {
-    '$route'(to, from) {
-      this.setUser();
-    }
-  },
   methods: {
     logout() {
       this.$confirm('确定要注销吗?', '提示', {

@@ -1,13 +1,13 @@
 <template lang="html">
-  <el-menu theme="light" :default-active="activeMenu" class="db-menu-bar" :mode="mode" router @select="handleSelect">
+  <el-menu theme="light" :default-active="activeMenu" class="db-menu-bar" :mode="mode" router>
     <template v-for="(route, index) in $router.options.routes[$router.options.routes.length - 2].children">
       <template v-if="route.children && route.name">
-        <el-submenu :index="route.name">
+        <el-submenu :index="route.name" :key="index">
           <template slot="title">
             <i :class="route.iconClass" v-if="mode != 'horizontal'"></i>
             {{route.name}}
           </template>
-          <el-menu-item v-if="!cRoute.hideInNav" :index="cRoute.name" v-for="(cRoute, cIndex) in route.children" :route="cRoute">{{cRoute.name}}</el-menu-item>
+          <el-menu-item v-if="!cRoute.hideInNav" :index="cRoute.name" v-for="(cRoute, cIndex) in route.children" :route="cRoute" :key="cIndex">{{cRoute.name}}</el-menu-item>
         </el-submenu>
       </template>
 
@@ -30,9 +30,6 @@
       }
     },
     methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-      },
       setActiveMenu() {
         this.activeMenu = this.$route.name;
       }
@@ -41,7 +38,7 @@
       this.setActiveMenu();
     },
     watch: {
-      '$route'(to, from) {
+      '$route'() {
         this.setActiveMenu();
       }
     },
@@ -81,7 +78,7 @@
       height: 36px;
       line-height: 36px;
     }
-    >.el-menu-item, 
+    >.el-menu-item,
     >.el-submenu {
       margin-left: 10px;
       color: #EEE;

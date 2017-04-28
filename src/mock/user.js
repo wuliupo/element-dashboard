@@ -18,7 +18,7 @@ export default {
     }
     if (page === 0) page++;
     mockUsers = mockUsers.filter((u, index) => index < 20 * page && index >= 20 * (page - 1));
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       setTimeout(() => {
         resolve([200, {
           total: _Users.length,
@@ -36,7 +36,7 @@ export default {
       age,
       date: new Date(time).getTime()
     });
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       setTimeout(() => {
         resolve([200, {
           code: 200,
@@ -48,7 +48,7 @@ export default {
   remove: config => {
     let { id } = JSON.parse(config.data);
     _Users = _Users.filter(u => u.id !== id);
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       setTimeout(() => {
         resolve([200, {
           code: 200,
@@ -68,7 +68,7 @@ export default {
         return true;
       }
     });
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       setTimeout(() => {
         resolve([200, {
           code: 200,
@@ -85,7 +85,7 @@ export default {
         return true;
       }
     });
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       setTimeout(() => {
         resolve([200, user]);
       });

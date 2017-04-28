@@ -28,7 +28,5 @@ open docs/index.html
   - utils —— 工具库文件夹
 
 - docs 生成的 product 文件
-
 - build 项目运行打包脚本
-
 - config 配置文件
