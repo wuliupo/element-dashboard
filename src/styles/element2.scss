@@ -1,0 +1,22 @@
+.el-button {
+  position: relative;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background-color: #fff;
+    opacity: .15;
+    border-radius: 4px;
+    -moz-transition: width .55s;
+    -webkit-transition: width .55s;
+    -o-transition: width .55s;
+    transition: width .55s;
+  }
+  &:hover:after {
+    width: 100%;
+  }
+}
